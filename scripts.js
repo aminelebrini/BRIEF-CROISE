@@ -150,3 +150,9 @@ document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
       }
     });
     container.appendChild(ValidForm);
+    const IMAGE = localStorage.getItem("image");
+    const Fname = localStorage.getItem("fullName");
+    const Role = localStorage.getItem("role");
+    const Email = localStorage.getItem("email");
+    const Telephone = localStorage.getItem("telephone");
+    const Experiences1 = localStorage.getItem("experiences");
