@@ -166,6 +166,21 @@ document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
           alert("L'employé est déjà là !");
           return;
         }
+        const carte = document.createElement("div");
+        carte.classList.add("pronalinfor");
+        carte.id = "pronalinfor";
+        carte.setAttribute("data-name", Fname);
+        carte.innerHTML = `<img src="${IMAGE}" alt="userlogo" id="profile1" data-profile="${Fname}" width="60px" height="60px">`;
+        carte.style.transition = "all 0.4s ease";
+        roomArray.push({
+          name: Fname,
+          role: Role,
+          email: Email,
+          image: IMAGE,
+          telephone: Telephone,
+          Experiences : Experiences1
+        });
+        roomList.appendChild(carte);
         //console.log("Added to room:", type, carte);
       });
     });
