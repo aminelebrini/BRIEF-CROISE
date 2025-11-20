@@ -107,3 +107,6 @@ function personnelCarte(
   console.log(GlobalArr);
   persoList.appendChild(carte);
 }
+function cancel() {
+  document.getElementById("validationForm").remove();
+}
