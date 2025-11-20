@@ -241,3 +241,101 @@ document.addEventListener('click', (e)=>{
         }
     })
 })
+
+function cancel2()
+{
+  document.getElementById('profiledisplay').remove();
+}
+// const num_regex = /^(0 | \+212)(5|7|6)[0-9]{8}$/g
+
+
+// document.addEventListener("click", (e) => {
+//   const Fname = localStorage.getItem("fullName");
+//   const Image = localStorage.getItem("image");
+//   const Role = localStorage.getItem("role");
+//   const Email = localStorage.getItem("email");
+//   const Telephone = localStorage.getItem("telephone");
+//   const Experiences = localStorage.getItem("experiences");
+
+  // const user = GlobalArr.find(p => p.name === Fname);
+
+  // if(includeConference.includes(user.role))
+  // {
+  //     console.log("oui vous pouver entrer");
+  // }
+  // if (e.target.classList.contains("plusbtn")) {
+  //   const card = e.target.closest(".pronalinfo");
+  //   const Job = card.querySelector("#job").textContent.trim();
+  //   console.log(Job);
+
+    // if(PersoArr.includes(Fname))
+    // {
+    //     alert("L'employé est déjà là !")
+    //     return;
+    // }
+    // // if(PersoArr.length < 3)   {
+    // //     const carte = document.createElement('div');
+    // //     carte.classList.add("pronalinfor");
+    // //     carte.id = "pronalinfor";
+    // //     carte.innerHTML = `<img src="${Image}" alt="userlogo" width="60px" height="60px">`;
+    // //     personnelList.appendChild(carte);
+    // //     PersoArr.push(Fname);
+    // // }else{
+    // //     alert('la chambre est en plein');
+    // // }
+
+    // if(SecurArr.includes(Fname))
+    // {
+    //     alert("L'employé est déjà là !")
+    //     return;
+    // }
+    // // if(SecurArr.length < 3)
+    // // {
+    // //     const carte = document.createElement('div');
+    // //     carte.classList.add("pronalinfor");;
+    // //     carte.id = "pronalinfor";
+    // //     carte.innerHTML = `<img src="${Image}" alt="userlogo" width="60px" height="60px">`;
+    // //     carte.style.transition = "all 0.4s ease";
+    // //     securiteList.appendChild(carte);
+    // //     SecurArr.push(Fname);
+    // // }else{
+    // //     alert('la chambre est en plein');
+    // // }
+
+    // if(SerArr.includes(Fname))
+    // {
+    //     alert("L'employé est déjà là !")
+    //     return;
+    // }
+
+    // // if(SerArr.length < 3)
+    // // {
+    // //     const carte = document.createElement('div');
+    // //     carte.classList.add("pronalinfor");;
+    // //     carte.id = "pronalinfor";
+    // //     carte.innerHTML = `<img src="${Image}" alt="userlogo" width="60px" height="60px">`;
+    // //     carte.style.transition = "all 0.4s ease";
+    // //     serveursList.appendChild(carte);
+    // //     SerArr.push(Fname);
+    // // }else{
+    // //     alert('la chambre est en plein');
+    // // }
+
+    // if(ManArr.includes(Fname))
+    // {
+    //     alert("L'employé est déjà là !")
+    //     return;
+    // }
+    // // if(SerArr.length < 3)
+    // // {
+    // //     const carte = document.createElement('div');
+    // //     carte.classList.add("pronalinfor");;
+    // //     carte.id = "pronalinfor";
+    // //     carte.innerHTML = `<img src="${Image}" alt="userlogo" width="60px" height="60px">`;
+    // //     carte.style.transition = "all 0.4s ease";
+    // //     SerArr.push(Fname);
+    // // }else{
+    // //     alert('la chambre est en plein');
+    // //
+//   }
+// });
