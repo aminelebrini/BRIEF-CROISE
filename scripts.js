@@ -99,6 +99,11 @@ document.getElementById("myForm").addEventListener("submit", (e) => {
         const DebutExp = document.getElementById('debut').value;
         const FinExp = document.getElementById('fin').value;
 
-        
+        localStorage.setItem("fullName", Fname);
+        localStorage.setItem("image", Image);
+        localStorage.setItem("role", Role);
+        localStorage.setItem("email", Email);
+        localStorage.setItem("telephone", Telephone);
+        localStorage.setItem("experiences", allExperience);
         });
 });
