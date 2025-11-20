@@ -156,3 +156,16 @@ document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
     const Email = localStorage.getItem("email");
     const Telephone = localStorage.getItem("telephone");
     const Experiences1 = localStorage.getItem("experiences");
+
+    document.querySelectorAll(".plusbtn").forEach((btns) => {
+      btns.addEventListener("click", (e) => {
+        const type = e.currentTarget.dataset.room;
+        const roomList = document.getElementById(`${type}list`);
+        const roomArray = RoomArr[type];
+        if (roomArray.some(membre=>membre.name === Fname)) {
+          alert("L'employé est déjà là !");
+          return;
+        }
+        //console.log("Added to room:", type, carte);
+      });
+    });
