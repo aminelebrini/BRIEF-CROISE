@@ -220,6 +220,24 @@ document.addEventListener('click', (e)=>{
             //   cosn
             // 
             console.log(pr.experiences);
+            DiplayProfile.innerHTML = `
+            <div class="profiledisplay2">
+                <div class="btncancel2">
+                    <button type="button" id="cancelbtn" onclick="cancel2()"><i class="fas fa-multiply"></i></button>
+                </div>
+                <div class="infor">
+                    <img src="${pr.image}" alt="profileImage"/>
+                    <h1 id="profileName">${pr.name}</h1>
+                    <p>${pr.role}</p>
+                    <p>Email: <span>${pr.email}</span></p>
+                    <p>TELEPHONE: <span>${pr.telephone}</span></p>
+                    <h2>EXPERIENCE</h2>
+                    <p>ENTREPRISE: ${pr.entreprise}</p>
+                    <p>ROLE: ${pr.role}</p>
+                    <p>EXPERIENCE : <span>${pr.debut}</span> / <span>${pr.fin}</span></p>
+                </div>
+            </div>`;
+            container.appendChild(DiplayProfile);
         }
     })
 })
