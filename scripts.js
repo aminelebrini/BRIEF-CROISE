@@ -111,3 +111,231 @@ function personnelCarte(
 function cancel() {
   document.getElementById("validationForm").remove();
 }
+document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const type = e.currentTarget.dataset.room;
+    const allowedRoles = roomConfig[type];
+    console.log(type);
+    const ValidForm = document.createElement("div");
+    ValidForm.className = "validationForm";
+    ValidForm.id = "validationForm";
+    ValidForm.innerHTML = `
+        <div class="btncancel">
+            <button type="button" id="cancelbtn" onclick="cancel()"><i class="fas fa-multiply"></i></button>
+        </div>`;
+
+    GlobalArr.forEach((ele) => {
+      if (allowedRoles.includes(ele.role)) {
+        const carte = document.createElement("div");
+        carte.classList.add("pronalinfo");
+        carte.id = "pronalinfo";
+
+        carte.innerHTML += `
+                        <img src="${ele.image}" width="60px">
+                        <div class="info" id="profile1" data-profile="${ele.name}">
+                            <h1>${ele.name}</h1>
+                            <p id="job">${ele.role}</p>
+                        </div>
+                        <div class="btns">
+                            <button type="button" class="plusbtn" data-room="${type}" data-role="${ele.role}">+</button>
+                            <button type="button" class="moinbtn" data-room="${type}" data-role="${ele.role}">-</button>
+                        </div>
+                    `;
+        ValidForm.appendChild(carte);
+      }
+      if(!allowedRoles.includes(ele.role))
+      {
+        ValidForm.innerHTML = "Empty list";
+        ValidForm.style.fontSize = "30px";
+      }
+    });
+    container.appendChild(ValidForm);
+    const IMAGE = localStorage.getItem("image");
+    const Fname = localStorage.getItem("fullName");
+    const Role = localStorage.getItem("role");
+    const Email = localStorage.getItem("email");
+    const Telephone = localStorage.getItem("telephone");
+    const Experiences1 = localStorage.getItem("experiences");
+
+    document.querySelectorAll(".plusbtn").forEach((btns) => {
+      btns.addEventListener("click", (e) => {
+        const type = e.currentTarget.dataset.room;
+        const roomList = document.getElementById(`${type}list`);
+        const roomArray = RoomArr[type];
+        if (roomArray.some(membre=>membre.name === Fname)) {
+          alert("L'employé est déjà là !");
+          return;
+        }
+        const carte = document.createElement("div");
+        carte.classList.add("pronalinfor");
+        carte.id = "pronalinfor";
+        carte.setAttribute("data-name", Fname);
+        carte.innerHTML = `<img src="${IMAGE}" alt="userlogo" id="profile1" data-profile="${Fname}" width="60px" height="60px">`;
+        carte.style.transition = "all 0.4s ease";
+        roomArray.push({
+          name: Fname,
+          role: Role,
+          email: Email,
+          image: IMAGE,
+          telephone: Telephone,
+          Experiences : Experiences1
+        });
+        roomList.appendChild(carte);
+        //console.log("Added to room:", type, carte);
+      });
+    });
+    document.querySelectorAll(".moinbtn").forEach((btns) => {
+      btns.addEventListener("click", (e) => {
+        const type = e.currentTarget.dataset.room;
+        const roomList1 = document.getElementById(`${type}list`);
+        const roomArray1 = RoomArr[type];
+        console.log(roomArray1);
+        const element = roomList1.querySelector(`[data-name="${Fname}"]`);
+
+        if (element) {
+          element.remove();
+          roomArray1.forEach((ele) => {
+            if (ele.name === element) {
+              ele.name -= 1;
+            }
+          });
+          console.log("new arr " + roomArray1);
+        }
+      });
+    });
+  });
+});
+
+document.addEventListener('click', (e)=>{
+  const DataName = e.target.dataset.profile;
+  GlobalArr.forEach(pr=>{
+        if(pr.name === DataName)
+        {
+            const DiplayProfile = document.createElement('div');
+            DiplayProfile.classList.add('profiledisplay');
+            DiplayProfile.id ="profiledisplay";
+
+            // for(let i = 0; i < pr.experiences.length; i++)
+            // {
+            //   cosn
+            // 
+            console.log(pr.experiences);
+            DiplayProfile.innerHTML = `
+            <div class="profiledisplay2">
+                <div class="btncancel2">
+                    <button type="button" id="cancelbtn" onclick="cancel2()"><i class="fas fa-multiply"></i></button>
+                </div>
+                <div class="infor">
+                    <img src="${pr.image}" alt="profileImage"/>
+                    <h1 id="profileName">${pr.name}</h1>
+                    <p>${pr.role}</p>
+                    <p>Email: <span>${pr.email}</span></p>
+                    <p>TELEPHONE: <span>${pr.telephone}</span></p>
+                    <h2>EXPERIENCE</h2>
+                    <p>ENTREPRISE: ${pr.entreprise}</p>
+                    <p>ROLE: ${pr.role}</p>
+                    <p>EXPERIENCE : <span>${pr.debut}</span> / <span>${pr.fin}</span></p>
+                </div>
+            </div>`;
+            container.appendChild(DiplayProfile);
+        }
+    })
+})
+
+function cancel2()
+{
+  document.getElementById('profiledisplay').remove();
+}
+// const num_regex = /^(0 | \+212)(5|7|6)[0-9]{8}$/g
+
+
+// document.addEventListener("click", (e) => {
+//   const Fname = localStorage.getItem("fullName");
+//   const Image = localStorage.getItem("image");
+//   const Role = localStorage.getItem("role");
+//   const Email = localStorage.getItem("email");
+//   const Telephone = localStorage.getItem("telephone");
+//   const Experiences = localStorage.getItem("experiences");
+
+  // const user = GlobalArr.find(p => p.name === Fname);
+
+  // if(includeConference.includes(user.role))
+  // {
+  //     console.log("oui vous pouver entrer");
+  // }
+  // if (e.target.classList.contains("plusbtn")) {
+  //   const card = e.target.closest(".pronalinfo");
+  //   const Job = card.querySelector("#job").textContent.trim();
+  //   console.log(Job);
+
+    // if(PersoArr.includes(Fname))
+    // {
+    //     alert("L'employé est déjà là !")
+    //     return;
+    // }
+    // // if(PersoArr.length < 3)   {
+    // //     const carte = document.createElement('div');
+    // //     carte.classList.add("pronalinfor");
+    // //     carte.id = "pronalinfor";
+    // //     carte.innerHTML = `<img src="${Image}" alt="userlogo" width="60px" height="60px">`;
+    // //     personnelList.appendChild(carte);
+    // //     PersoArr.push(Fname);
+    // // }else{
+    // //     alert('la chambre est en plein');
+    // // }
+
+    // if(SecurArr.includes(Fname))
+    // {
+    //     alert("L'employé est déjà là !")
+    //     return;
+    // }
+    // // if(SecurArr.length < 3)
+    // // {
+    // //     const carte = document.createElement('div');
+    // //     carte.classList.add("pronalinfor");;
+    // //     carte.id = "pronalinfor";
+    // //     carte.innerHTML = `<img src="${Image}" alt="userlogo" width="60px" height="60px">`;
+    // //     carte.style.transition = "all 0.4s ease";
+    // //     securiteList.appendChild(carte);
+    // //     SecurArr.push(Fname);
+    // // }else{
+    // //     alert('la chambre est en plein');
+    // // }
+
+    // if(SerArr.includes(Fname))
+    // {
+    //     alert("L'employé est déjà là !")
+    //     return;
+    // }
+
+    // // if(SerArr.length < 3)
+    // // {
+    // //     const carte = document.createElement('div');
+    // //     carte.classList.add("pronalinfor");;
+    // //     carte.id = "pronalinfor";
+    // //     carte.innerHTML = `<img src="${Image}" alt="userlogo" width="60px" height="60px">`;
+    // //     carte.style.transition = "all 0.4s ease";
+    // //     serveursList.appendChild(carte);
+    // //     SerArr.push(Fname);
+    // // }else{
+    // //     alert('la chambre est en plein');
+    // // }
+
+    // if(ManArr.includes(Fname))
+    // {
+    //     alert("L'employé est déjà là !")
+    //     return;
+    // }
+    // // if(SerArr.length < 3)
+    // // {
+    // //     const carte = document.createElement('div');
+    // //     carte.classList.add("pronalinfor");;
+    // //     carte.id = "pronalinfor";
+    // //     carte.innerHTML = `<img src="${Image}" alt="userlogo" width="60px" height="60px">`;
+    // //     carte.style.transition = "all 0.4s ease";
+    // //     SerArr.push(Fname);
+    // // }else{
+    // //     alert('la chambre est en plein');
+    // //
+//   }
+// });
