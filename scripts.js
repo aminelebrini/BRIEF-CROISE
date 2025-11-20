@@ -77,6 +77,7 @@ document.getElementById("validation").addEventListener("click", ()=>{
         localStorage.setItem("email", Email);
         localStorage.setItem("telephone", Telephone);
         localStorage.setItem("experiences", allExperience);
+
     });
 });
 
