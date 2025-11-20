@@ -241,3 +241,9 @@ document.addEventListener('click', (e)=>{
         }
     })
 })
+
+function cancel2()
+{
+  document.getElementById('profiledisplay').remove();
+}
+// const num_regex = /^(0 | \+212)(5|7|6)[0-9]{8}$/g
