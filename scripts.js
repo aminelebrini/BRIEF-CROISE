@@ -143,5 +143,83 @@ document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
                     `;
         ValidForm.appendChild(carte);
       }
+      if(!allowedRoles.includes(ele.role))
+      {
+        ValidForm.innerHTML = "Empty list";
+        ValidForm.style.fontSize = "30px";
+      }
     });
     container.appendChild(ValidForm);
+    const IMAGE = localStorage.getItem("image");
+    const Fname = localStorage.getItem("fullName");
+    const Role = localStorage.getItem("role");
+    const Email = localStorage.getItem("email");
+    const Telephone = localStorage.getItem("telephone");
+    const Experiences1 = localStorage.getItem("experiences");
+
+    document.querySelectorAll(".plusbtn").forEach((btns) => {
+      btns.addEventListener("click", (e) => {
+        const type = e.currentTarget.dataset.room;
+        const roomList = document.getElementById(`${type}list`);
+        const roomArray = RoomArr[type];
+        if (roomArray.some(membre=>membre.name === Fname)) {
+          alert("L'employé est déjà là !");
+          return;
+        }
+        const carte = document.createElement("div");
+        carte.classList.add("pronalinfor");
+        carte.id = "pronalinfor";
+        carte.setAttribute("data-name", Fname);
+        carte.innerHTML = `<img src="${IMAGE}" alt="userlogo" id="profile1" data-profile="${Fname}" width="60px" height="60px">`;
+        carte.style.transition = "all 0.4s ease";
+        roomArray.push({
+          name: Fname,
+          role: Role,
+          email: Email,
+          image: IMAGE,
+          telephone: Telephone,
+          Experiences : Experiences1
+        });
+        roomList.appendChild(carte);
+        //console.log("Added to room:", type, carte);
+      });
+    });
+    document.querySelectorAll(".moinbtn").forEach((btns) => {
+      btns.addEventListener("click", (e) => {
+        const type = e.currentTarget.dataset.room;
+        const roomList1 = document.getElementById(`${type}list`);
+        const roomArray1 = RoomArr[type];
+        console.log(roomArray1);
+        const element = roomList1.querySelector(`[data-name="${Fname}"]`);
+
+        if (element) {
+          element.remove();
+          roomArray1.forEach((ele) => {
+            if (ele.name === element) {
+              ele.name -= 1;
+            }
+          });
+          console.log("new arr " + roomArray1);
+        }
+      });
+    });
+  });
+});
+
+document.addEventListener('click', (e)=>{
+  const DataName = e.target.dataset.profile;
+  GlobalArr.forEach(pr=>{
+        if(pr.name === DataName)
+        {
+            const DiplayProfile = document.createElement('div');
+            DiplayProfile.classList.add('profiledisplay');
+            DiplayProfile.id ="profiledisplay";
+
+            // for(let i = 0; i < pr.experiences.length; i++)
+            // {
+            //   cosn
+            // 
+            console.log(pr.experiences);
+        }
+    })
+})
