@@ -1,4 +1,6 @@
 const container = document.getElementById('container');
+const persoList = document.getElementById("persolist");
+const GlobalArr = [];
 document.getElementById("validation").addEventListener("click", ()=>{
   const ValidForm = document.createElement("div");
   ValidForm.className = "validationForm";
@@ -44,23 +46,6 @@ document.getElementById("validation").addEventListener("click", ()=>{
                     <input type="text" placeholder="NUMERO DE TELEPHONE" id="telephone"/>
                     <p id="phonemessage"></p>
                 </div>
-
-                <div class="experienceforms">
-                    <div class="input-group3">
-                        <h1>EXPERIENCE</h1>
-                        <div class="exp">
-                            <label for="exprole">LE ROLE</label>
-                            <input type="text" id="exprole" placeholder="ROLE"/>
-                            <label for="expentreprise">ENTREPRISE</label>
-                            <input type="text" id="expentreprise" placeholder="ENTREPRISE"/>
-                            <label for="debut">DATE DE DEBUT</label>
-                            <input type="date" class="debut" id="debut" placeholder="DATE DE DEBUT"/>
-                            <label for="fin">DATE DE FIN</label>
-                            <input type="date" class="fin" id="fin" placeholder="DATE DE FIN"/>
-                        </div>
-                        <p id="experiencemessage"></p>
-                    </div>
-                </div>
                 <div class="addexpbtn">
                     <button type="button" id="addexperience" class="addexperience">ADD EXPERIENCE</button>
                 </div>
@@ -71,21 +56,7 @@ document.getElementById("validation").addEventListener("click", ()=>{
         </div>
     `;
         container.appendChild(ValidForm);
-});
-
-document.getElementById("myForm").addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        const Fname = document.getElementById("fullname").value;
-        const Image = document.getElementById("profileimage").value;
-        const Email = document.getElementById("email").value;
-        const Telephone = document.getElementById("telephone").value;
-        const Role = document.getElementById("role").value;
-        const ExpRole = document.getElementById('exprole').value;
-        const ExpEntreprise = document.getElementById('expentreprise').value;
-        const DebutExp = document.getElementById('debut').value;
-        const FinExp = document.getElementById('fin').value;
-
+        
         document.getElementById("myForm").addEventListener("submit", (e) => {
         e.preventDefault();
 
@@ -99,21 +70,14 @@ document.getElementById("myForm").addEventListener("submit", (e) => {
         const DebutExp = document.getElementById('debut').value;
         const FinExp = document.getElementById('fin').value;
 
-        personnelCarte(
-            Fname,
-            Image,
-            Role,
-            Email,
-            Telephone,
-            allExperience
-        );
-            localStorage.setItem("fullName", Fname);
-            localStorage.setItem("image", Image);
-            localStorage.setItem("role", Role);
-            localStorage.setItem("email", Email);
-            localStorage.setItem("telephone", Telephone);
-            localStorage.setItem("experiences", allExperience);
-        });
+        personnelCarte(Fname,Image,Role,Email,Telephone,allExperience);
+        localStorage.setItem("fullName", Fname);
+        localStorage.setItem("image", Image);
+        localStorage.setItem("role", Role);
+        localStorage.setItem("email", Email);
+        localStorage.setItem("telephone", Telephone);
+        localStorage.setItem("experiences", allExperience);
+    });
 });
 
 //fonction pour creer une carte de personnel
@@ -122,8 +86,7 @@ function personnelCarte(
   Image,
   Role,
   Email,
-  Telephone,
-  Experiences) {
+  Telephone) {
   const carte = document.createElement("div");
   carte.classList.add("pronalinfo");
   carte.id = "pronalinfo";
@@ -140,7 +103,6 @@ function personnelCarte(
     role: Role,
     email: Email,
     telephone: Telephone,
-    experiences: Experiences
   });
   console.log(GlobalArr);
   persoList.appendChild(carte);
