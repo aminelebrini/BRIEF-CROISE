@@ -111,3 +111,37 @@ function personnelCarte(
 function cancel() {
   document.getElementById("validationForm").remove();
 }
+document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const type = e.currentTarget.dataset.room;
+    const allowedRoles = roomConfig[type];
+    console.log(type);
+    const ValidForm = document.createElement("div");
+    ValidForm.className = "validationForm";
+    ValidForm.id = "validationForm";
+    ValidForm.innerHTML = `
+        <div class="btncancel">
+            <button type="button" id="cancelbtn" onclick="cancel()"><i class="fas fa-multiply"></i></button>
+        </div>`;
+
+    GlobalArr.forEach((ele) => {
+      if (allowedRoles.includes(ele.role)) {
+        const carte = document.createElement("div");
+        carte.classList.add("pronalinfo");
+        carte.id = "pronalinfo";
+
+        carte.innerHTML += `
+                        <img src="${ele.image}" width="60px">
+                        <div class="info" id="profile1" data-profile="${ele.name}">
+                            <h1>${ele.name}</h1>
+                            <p id="job">${ele.role}</p>
+                        </div>
+                        <div class="btns">
+                            <button type="button" class="plusbtn" data-room="${type}" data-role="${ele.role}">+</button>
+                            <button type="button" class="moinbtn" data-room="${type}" data-role="${ele.role}">-</button>
+                        </div>
+                    `;
+        ValidForm.appendChild(carte);
+      }
+    });
+    container.appendChild(ValidForm);
