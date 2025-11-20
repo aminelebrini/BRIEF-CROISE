@@ -115,3 +115,33 @@ document.getElementById("myForm").addEventListener("submit", (e) => {
             localStorage.setItem("experiences", allExperience);
         });
 });
+
+//fonction pour creer une carte de personnel
+function personnelCarte(
+  Fname,
+  Image,
+  Role,
+  Email,
+  Telephone,
+  Experiences) {
+  const carte = document.createElement("div");
+  carte.classList.add("pronalinfo");
+  carte.id = "pronalinfo";
+  carte.innerHTML += `
+        <img src="${Image}" alt="userlogo" width="60px" height="60px">
+        <div class="info" id="profile1" data-profile="${Fname}">
+            <h1>${Fname}</h1>
+            <p id="job">${Role}</p>
+        </div>
+    `;
+  GlobalArr.push({
+    name: Fname,
+    image: Image,
+    role: Role,
+    email: Email,
+    telephone: Telephone,
+    experiences: Experiences
+  });
+  console.log(GlobalArr);
+  persoList.appendChild(carte);
+}
