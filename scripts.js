@@ -205,3 +205,21 @@ document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
     });
   });
 });
+
+document.addEventListener('click', (e)=>{
+  const DataName = e.target.dataset.profile;
+  GlobalArr.forEach(pr=>{
+        if(pr.name === DataName)
+        {
+            const DiplayProfile = document.createElement('div');
+            DiplayProfile.classList.add('profiledisplay');
+            DiplayProfile.id ="profiledisplay";
+
+            // for(let i = 0; i < pr.experiences.length; i++)
+            // {
+            //   cosn
+            // 
+            console.log(pr.experiences);
+        }
+    })
+})
