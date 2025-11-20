@@ -1,4 +1,6 @@
 const container = document.getElementById('container');
+const persoList = document.getElementById("persolist");
+const GlobalArr = [];
 document.getElementById("validation").addEventListener("click", ()=>{
   const ValidForm = document.createElement("div");
   ValidForm.className = "validationForm";
@@ -71,21 +73,7 @@ document.getElementById("validation").addEventListener("click", ()=>{
         </div>
     `;
         container.appendChild(ValidForm);
-});
-
-document.getElementById("myForm").addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        const Fname = document.getElementById("fullname").value;
-        const Image = document.getElementById("profileimage").value;
-        const Email = document.getElementById("email").value;
-        const Telephone = document.getElementById("telephone").value;
-        const Role = document.getElementById("role").value;
-        const ExpRole = document.getElementById('exprole').value;
-        const ExpEntreprise = document.getElementById('expentreprise').value;
-        const DebutExp = document.getElementById('debut').value;
-        const FinExp = document.getElementById('fin').value;
-
+        
         document.getElementById("myForm").addEventListener("submit", (e) => {
         e.preventDefault();
 
@@ -99,21 +87,13 @@ document.getElementById("myForm").addEventListener("submit", (e) => {
         const DebutExp = document.getElementById('debut').value;
         const FinExp = document.getElementById('fin').value;
 
-        personnelCarte(
-            Fname,
-            Image,
-            Role,
-            Email,
-            Telephone,
-            allExperience
-        );
-            localStorage.setItem("fullName", Fname);
-            localStorage.setItem("image", Image);
-            localStorage.setItem("role", Role);
-            localStorage.setItem("email", Email);
-            localStorage.setItem("telephone", Telephone);
-            localStorage.setItem("experiences", allExperience);
-        });
+        personnelCarte(Fname,Image,Role,Email,Telephone,allExperience);
+        localStorage.setItem("fullName", Fname);
+        localStorage.setItem("image", Image);
+        localStorage.setItem("role", Role);
+        localStorage.setItem("email", Email);
+        localStorage.setItem("telephone", Telephone);
+        localStorage.setItem("experiences", allExperience);
 });
 
 //fonction pour creer une carte de personnel
