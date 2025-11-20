@@ -1,3 +1,4 @@
+const container = document.getElementById('container');
 document.getElementById("validation").addEventListener("click", ()=>{
   const ValidForm = document.createElement("div");
   ValidForm.className = "validationForm";
