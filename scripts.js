@@ -184,3 +184,24 @@ document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
         //console.log("Added to room:", type, carte);
       });
     });
+    document.querySelectorAll(".moinbtn").forEach((btns) => {
+      btns.addEventListener("click", (e) => {
+        const type = e.currentTarget.dataset.room;
+        const roomList1 = document.getElementById(`${type}list`);
+        const roomArray1 = RoomArr[type];
+        console.log(roomArray1);
+        const element = roomList1.querySelector(`[data-name="${Fname}"]`);
+
+        if (element) {
+          element.remove();
+          roomArray1.forEach((ele) => {
+            if (ele.name === element) {
+              ele.name -= 1;
+            }
+          });
+          console.log("new arr " + roomArray1);
+        }
+      });
+    });
+  });
+});
