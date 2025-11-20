@@ -1,3 +1,4 @@
+const container = document.getElementById('container');
 document.getElementById("validation").addEventListener("click", ()=>{
   const ValidForm = document.createElement("div");
   ValidForm.className = "validationForm";
@@ -71,3 +72,76 @@ document.getElementById("validation").addEventListener("click", ()=>{
     `;
         container.appendChild(ValidForm);
 });
+
+document.getElementById("myForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const Fname = document.getElementById("fullname").value;
+        const Image = document.getElementById("profileimage").value;
+        const Email = document.getElementById("email").value;
+        const Telephone = document.getElementById("telephone").value;
+        const Role = document.getElementById("role").value;
+        const ExpRole = document.getElementById('exprole').value;
+        const ExpEntreprise = document.getElementById('expentreprise').value;
+        const DebutExp = document.getElementById('debut').value;
+        const FinExp = document.getElementById('fin').value;
+
+        document.getElementById("myForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const Fname = document.getElementById("fullname").value;
+        const Image = document.getElementById("profileimage").value;
+        const Email = document.getElementById("email").value;
+        const Telephone = document.getElementById("telephone").value;
+        const Role = document.getElementById("role").value;
+        const ExpRole = document.getElementById('exprole').value;
+        const ExpEntreprise = document.getElementById('expentreprise').value;
+        const DebutExp = document.getElementById('debut').value;
+        const FinExp = document.getElementById('fin').value;
+
+        personnelCarte(
+            Fname,
+            Image,
+            Role,
+            Email,
+            Telephone,
+            allExperience
+        );
+            localStorage.setItem("fullName", Fname);
+            localStorage.setItem("image", Image);
+            localStorage.setItem("role", Role);
+            localStorage.setItem("email", Email);
+            localStorage.setItem("telephone", Telephone);
+            localStorage.setItem("experiences", allExperience);
+        });
+});
+
+//fonction pour creer une carte de personnel
+function personnelCarte(
+  Fname,
+  Image,
+  Role,
+  Email,
+  Telephone,
+  Experiences) {
+  const carte = document.createElement("div");
+  carte.classList.add("pronalinfo");
+  carte.id = "pronalinfo";
+  carte.innerHTML += `
+        <img src="${Image}" alt="userlogo" width="60px" height="60px">
+        <div class="info" id="profile1" data-profile="${Fname}">
+            <h1>${Fname}</h1>
+            <p id="job">${Role}</p>
+        </div>
+    `;
+  GlobalArr.push({
+    name: Fname,
+    image: Image,
+    role: Role,
+    email: Email,
+    telephone: Telephone,
+    experiences: Experiences
+  });
+  console.log(GlobalArr);
+  persoList.appendChild(carte);
+}
