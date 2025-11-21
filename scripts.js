@@ -273,7 +273,6 @@ function personnelCarte(
 function cancel() {
   document.getElementById("validationForm").remove();
 }
-//add button in carte
 document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
   btn.addEventListener("click", (e) => {
     const type = e.currentTarget.dataset.room;
@@ -314,6 +313,7 @@ document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
     });
 
     container.appendChild(ValidForm);
+
     const IMAGE = localStorage.getItem("image");
     const Fname = localStorage.getItem("fullName");
     const Role = localStorage.getItem("role");
@@ -332,6 +332,7 @@ document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
           return;
         }
         const carte = document.createElement("div");
+
           carte.classList.add("pronalinfor");
           carte.id = "pronalinfor";
           carte.setAttribute("data-name", Fname);
@@ -345,16 +346,14 @@ document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
             telephone: Telephone,
             Experiences : Experiences1
           });
-        if(roomArray.length < 3)
+        if(roomArray.length <= 3)
         {
           roomList.appendChild(carte);
         }
-        
-        
-
         //console.log("Added to room:", type, carte);
       });
     });
+
     document.querySelectorAll(".moinbtn").forEach((btns) => {
       btns.addEventListener("click", (e) => {
         const type = e.currentTarget.dataset.room;
@@ -520,4 +519,3 @@ function cancel2()
     // //     alert('la chambre est en plein');
     // //
 //   }
-// });
