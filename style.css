@@ -228,10 +228,7 @@ hr{
     display: grid;
     grid-template-columns: 38% 16% 23% 23%;
     grid-template-rows: repeat(3, 33%);
-    width: 85%;   
-    height: 100%;   
-    grid-template-rows: repeat(3, 34%);
-    width: 100%;
+    width: 85%;
     height: 92vh;
 }
 
@@ -364,14 +361,6 @@ hr{
     background-color: rgb(0, 168, 253);
     color: white;
     font-size: 30px;
-}
-.conferencelist, .receptionlist,.serveurslist, .securitelist, .persnnallist, .archiveslist{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-
 }
 .profiledisplay{
     position: fixed;
@@ -624,26 +613,16 @@ hr{
         display: block;
     }
 
-    .container2 {
+    /* .container2 {
         position: absolute;
         top: 0;
-        left: 20%;
+        left: 0;
         display: grid;
         grid-template-columns: 25% 12% 15% 15%;
         grid-template-rows: repeat(3, 33%);
         width: 90%;   
-        height: 90vh;   
-    .container {
-    display: grid;
-    background-image: url('https://simplonline-v3-prod.s3.eu-west-3.amazonaws.com/media/image/jpg/plan-69159a65c5684763515973.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    grid-template-columns: 38% 17% 23% 23%;
-    grid-template-rows: 35% 35%;  
-    height: 150vh;
-    width: 100%;
-    position: relative;
-    }
+        height: 90vh; 
+    }   */
     .conference , .reception, .serveurs, .securite , .personnel, .archives, .vertcolouar , .horizcolouar {
         border: 2px solid black;
         background: transparent;
