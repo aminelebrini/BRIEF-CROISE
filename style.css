@@ -68,7 +68,7 @@ header h1{
     position: absolute;
     border-radius: 20px;
     top: 10%;
-    left: 40%;
+    left: 30%;
     z-index: 10;
 }
 .forms{
@@ -144,14 +144,13 @@ hr{
     justify-content: space-around;
     gap: 10px;
 }
-.profileimg{
+.input-group1 .profileimg{
     width: 40px;
     height: 40px;
     border-radius: 50%;
     border: 2px solid rgb(223, 219, 219);
     outline-style: dashed;
-
-}
+    }
 .input-group1 input{
     width: 345px;
     height: 40px;
@@ -206,12 +205,31 @@ hr{
 .persolist{
     height: 90vh;
 }
-.container{
+.container {
+    width: 100%;
+    height: 90vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container img {
+    width: 90%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.container2 {
+    position: absolute;
+    top: 0;
+    left: 5%;
     display: grid;
-    background-image: url('https://simplonline-v3-prod.s3.eu-west-3.amazonaws.com/media/image/jpg/plan-69159a65c5684763515973.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
     grid-template-columns: 38% 16% 23% 23%;
+    grid-template-rows: repeat(3, 33%);
+    width: 90%;   
+    height: 100%;   
     grid-template-rows: repeat(3, 34%);
     width: 100%;
     height: 92vh;
@@ -448,7 +466,7 @@ hr{
         justify-content: center;
         width: 15%;
         background-color: white;
-        height: 150vh;
+        height: 90vh;
     }
     .validation{
         border: 2px solid transparent;
@@ -590,7 +608,31 @@ hr{
     .pronalinfo p{
         font-size: 10px;
     }
-    
+   .container {
+    width: 100%;
+    height: 90vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+
+    .container .plan {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+    }
+
+    .container2 {
+        position: absolute;
+        top: 0;
+        left: 20%;
+        display: grid;
+        grid-template-columns: 25% 12% 15% 15%;
+        grid-template-rows: repeat(3, 33%);
+        width: 90%;   
+        height: 90vh;   
     .container {
     display: grid;
     background-image: url('https://simplonline-v3-prod.s3.eu-west-3.amazonaws.com/media/image/jpg/plan-69159a65c5684763515973.jpg');
@@ -606,6 +648,7 @@ hr{
         border: 2px solid black;
         background: transparent;
         display: flex;
+        text-align: center;
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
@@ -613,13 +656,24 @@ hr{
     }
 
     .conference button, .reception button, .serveurs button, .securite button, .personnel button, .archives button, .vertcolouar button, .horizcolouar button{
+        width: 25px;
+        height: 25px;
+
         width: 35px;
         height: 35px;
         border-radius: 5px;
         border-color: transparent;
         background-color: rgb(0, 168, 253);
         color: white;
-        font-size: 20px;
+        font-size: 10px;
+    }
+    .input-group1 .profileimg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid rgb(223, 219, 219);
+    outline-style: dashed;
+     font-size: 20px;
     }
     
 }

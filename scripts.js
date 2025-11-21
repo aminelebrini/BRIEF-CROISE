@@ -310,7 +310,7 @@ document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
       }
       if(!allowedRoles.includes(ele.role))
       {
-        ValidForm.innerHTML = "Empty list";
+        ValidForm.innerHTML += "Empty list";
         ValidForm.style.fontSize = "30px";
       }
     });
