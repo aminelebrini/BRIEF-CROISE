@@ -324,6 +324,7 @@ document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
     const Telephone = localStorage.getItem("telephone");
     const Experiences1 = localStorage.getItem("experiences");
 
+    console.log(Fname);
     document.querySelectorAll(".plusbtn").forEach((btns) => {
       btns.addEventListener("click", (e) => {
         const type = e.currentTarget.dataset.room;
@@ -333,21 +334,28 @@ document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
           alert("L'employé est déjà là !");
           return;
         }
-        const carte = document.createElement("div");
-        carte.classList.add("pronalinfor");
-        carte.id = "pronalinfor";
-        carte.setAttribute("data-name", Fname);
-        carte.innerHTML = `<img src="${IMAGE}" alt="userlogo" id="profile1" data-profile="${Fname}" width="60px" height="60px">`;
-        carte.style.transition = "all 0.4s ease";
-        roomArray.push({
-          name: Fname,
-          role: Role,
-          email: Email,
-          image: IMAGE,
-          telephone: Telephone,
-          Experiences : Experiences1
-        });
-        roomList.appendChild(carte);
+        if(roomArray.length < 3)
+        {
+          const carte = document.createElement("div");
+          carte.classList.add("pronalinfor");
+          carte.id = "pronalinfor";
+          carte.setAttribute("data-name", Fname);
+          carte.innerHTML = `<img src="${IMAGE}" alt="userlogo" id="profile1" data-profile="${Fname}" width="60px" height="60px">`;
+          carte.style.transition = "all 0.4s ease";
+          roomArray.push({
+            name: Fname,
+            role: Role,
+            email: Email,
+            image: IMAGE,
+            telephone: Telephone,
+            Experiences : Experiences1
+          });
+          roomList.appendChild(carte);
+        }
+        else{
+          alert('room et en plein!')
+        }
+        
 
         //console.log("Added to room:", type, carte);
       });
