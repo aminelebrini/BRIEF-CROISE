@@ -352,7 +352,13 @@ hr{
     background-color: rgb(236, 51, 51);
     font-size: 20px;
 }
-
+.conferencelist, .receptionlist ,.serveurslist,.securitelist,.persnnallist ,.archiveslist{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-around;
+}
 .conference button, .reception button, .serveurs button, .securite button, .personnel button, .archives button, .vertcolouar button, .horizcolouar button{
     width: 45px;
     height: 45px;
