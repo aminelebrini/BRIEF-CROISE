@@ -274,8 +274,6 @@ function cancel() {
   document.getElementById("validationForm").remove();
 }
 //add button in carte
-
-
 document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
   btn.addEventListener("click", (e) => {
     const type = e.currentTarget.dataset.room;
@@ -316,7 +314,6 @@ document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
     });
 
     container.appendChild(ValidForm);
-
     const IMAGE = localStorage.getItem("image");
     const Fname = localStorage.getItem("fullName");
     const Role = localStorage.getItem("role");
@@ -358,7 +355,6 @@ document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
         //console.log("Added to room:", type, carte);
       });
     });
-
     document.querySelectorAll(".moinbtn").forEach((btns) => {
       btns.addEventListener("click", (e) => {
         const type = e.currentTarget.dataset.room;
