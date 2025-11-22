@@ -143,6 +143,8 @@ document.getElementById("validation").addEventListener("click", ()=>{
         const Fnamemessage = document.getElementById('fnamemessage');
         const ExperMessage = document.getElementById('experiencemessage');
 
+        
+
         if(Fname.length === 0)
         {
           Fnamemessage.innerText = "S'il vous plaît, mettez Votre Full Name";
@@ -399,4 +401,3 @@ function cancel2() {
   const profileEl = document.getElementById('profiledisplay');
   if(profileEl) profileEl.remove();
 }
-
