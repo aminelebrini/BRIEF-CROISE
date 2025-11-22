@@ -266,7 +266,6 @@ function personnelCarte(Fname,Image,Role,Email,Telephone,Experiences) {
     persoList.appendChild(carte);
   })
 }
-
 document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
   btn.addEventListener("click", (e) => {
     const type = e.currentTarget.dataset.room;
@@ -305,6 +304,12 @@ document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
     }
 
     container.appendChild(ValidForm);
+    const IMAGE = localStorage.getItem("image");
+    const Fname = localStorage.getItem("fullName");
+    const Role = localStorage.getItem("role");
+    const Email = localStorage.getItem("email");
+    const Telephone = localStorage.getItem("telephone");
+    const Experiences1 = localStorage.getItem("experiences");
 
     ValidForm.querySelectorAll(".plusbtn").forEach(btn => {
       btn.addEventListener("click", (e) => {
@@ -337,7 +342,6 @@ document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
         const roomList = document.getElementById(`${type}list`);
         const roomArray = RoomArr[type];
         const element = roomList.querySelector(`[data-name="${selectName}"]`);
-
         if (element) {
           element.remove();
           const index = roomArray.findIndex(emp => emp.name === selectName);
