@@ -6,13 +6,15 @@ const securiteList = document.getElementById("securitelist");
 const personnelList = document.getElementById("persnnallist");
 const archivesList = document.getElementById("archiveslist");
 const persoList = document.getElementById("persolist");
+
 const GlobalArr = [];
+
 
 const roomConfig = {
   conference: ["IT", "MANAGER"],
   securite: ["SECURITE", "MANAGER"],
   serveurs: ["MANAGER", "IT"],
-  reception: ["IT", "MANGER", "NETOYAGE", "SECURITE","RECEPTIONNISTE"],
+  reception: ["IT", "MANAGER", "NETTOYAGE", "SECURITE", "RECEPTIONNISTE"],
   personnel: ["IT", "MANGER"],
   archives: ["SECURITE", "MANAGER"],
 };
@@ -49,7 +51,7 @@ document.getElementById("validation").addEventListener("click", ()=>{
             <form class="fromremplit" id="myForm">
                 <div class="input-group">
                     <label for="fullname">nom et prénom</label>
-                    <input type="text" placeholder="NOM ET PRENOM" id="fullname"/>
+                    <input type="text" placeholder="NOM ET PRENOM" id="fullname" required/>
                     <p id="fnamemessage"></p>
                 </div>
 
@@ -59,25 +61,24 @@ document.getElementById("validation").addEventListener("click", ()=>{
                 </div>
                 <div class="input-group2">
                     <label for="role">Role</label>
-                    <select id="role">
+                    <select id="role" required>
                         <option value="IT">IT</option>
                         <option value="SECURITE">SECURITE</option>
                         <option value="MANAGER">MANAGER</option>
                         <option value="RECEPTIONNISTE">RECEPTIONNISTE</option>
                         <option value="NETTOYAGE">NETTOYAGE</option>
-                        <option value="SERVEUR">SERVEUR</option>
                     </select>
                 </div>
 
                 <div class="input-group">
                     <label for="email">Email</label>
-                    <input type="email" placeholder="EMAIL" id="email"/>
+                    <input type="email" placeholder="EMAIL" id="email" required/>
                     <p id="emailmessage"></p>
                 </div>
 
                 <div class="input-group">
                     <label for="telephone">Téléphone</label>
-                    <input type="text" placeholder="NUMERO DE TELEPHONE" id="telephone"/>
+                    <input type="text" placeholder="NUMERO DE TELEPHONE" id="telephone" required/>
                     <p id="phonemessage"></p>
                 </div>
 
@@ -107,15 +108,13 @@ document.getElementById("validation").addEventListener("click", ()=>{
         </div>
     `;
         container.appendChild(ValidForm);
-        //uploader automatiquement l'image
+
         const profileInput = document.getElementById("profileimage");
         const profileImg   = document.getElementById("profileimg");
         profileInput.addEventListener('input', function (e){
             profileImg.src  = e.target.value;
         })
-        //
 
-        //ajouter plus d'experience
         const Forms = document.querySelector(".experienceforms");
         const addBtn = document.getElementById("addexperience");
         const ExperienceForme = document.querySelector(".input-group3");
@@ -125,14 +124,17 @@ document.getElementById("validation").addEventListener("click", ()=>{
         console.log(clone);
         Forms.appendChild(clone);
         });
-        //
+  
         document.getElementById("myForm").addEventListener("submit", (e) => {
         e.preventDefault();
 
         const useExperience = [];
 
         const Fname = document.getElementById("fullname").value;
-        const Image = document.getElementById("profileimage").value;
+        let Image = document.getElementById("profileimage").value.trim();
+        if (Image === "") {
+          Image = "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png";
+        }
         const Email = document.getElementById("email").value;
         const Telephone = document.getElementById("telephone").value;
         const Role = document.getElementById("role").value;
@@ -140,7 +142,7 @@ document.getElementById("validation").addEventListener("click", ()=>{
         const PhoneMessage = document.getElementById('phonemessage');
         const Fnamemessage = document.getElementById('fnamemessage');
         const ExperMessage = document.getElementById('experiencemessage');
-        //verification de FULL NAME
+
         if(Fname.length === 0)
         {
           Fnamemessage.innerText = "S'il vous plaît, mettez Votre Full Name";
@@ -157,7 +159,6 @@ document.getElementById("validation").addEventListener("click", ()=>{
             Fnamemessage.innerText = "";
         }
 
-        //verification de numero de telephone
         if(!(((Telephone[0]==="0" && Telephone[1]==="5") || (Telephone[0]==="0" && Telephone[1]==="6") || (Telephone[0]==="0" && Telephone[1]==="7")) && Telephone.length===10))
         {
           PhoneMessage.innerText="S'il vous plaît, mettez une Numéro Valide";
@@ -166,7 +167,6 @@ document.getElementById("validation").addEventListener("click", ()=>{
         }else{
           PhoneMessage.innerText = "";
         }
-        //verification de l'email
         if(Email.length === 0)
         {
             
@@ -189,8 +189,7 @@ document.getElementById("validation").addEventListener("click", ()=>{
         }else{
           EmailMessage.innerText = "";
         }
-        // verification du date d'experience
-    //get la valeur des experie1nce ajouter
+   
     document.querySelectorAll('.input-group3').forEach(ex=>{
         const ExpEntreprise = ex.querySelector('.expentreprise').value;
         const ExpRole = ex.querySelector('.exprole').value;
@@ -240,25 +239,9 @@ document.getElementById("validation").addEventListener("click", ()=>{
     document.getElementById('myForm').reset(); 
   });
 });
-//fonction pour creer une carte de personnel
-function personnelCarte(
-  Fname,
-  Image,
-  Role,
-  Email,
-  Telephone,
-  Experiences) {
-  const carte = document.createElement("div");
-  carte.classList.add("pronalinfo");
-  carte.id = "pronalinfo";
-  carte.innerHTML += `
-        <img src="${Image}" alt="userlogo" width="60px" height="60px">
-        <div class="info" id="profile1" data-profile="${Fname}">
-            <h1>${Fname}</h1>
-            <p id="job">${Role}</p>
-        </div>
-    `;
-  GlobalArr.push({
+
+function personnelCarte(Fname,Image,Role,Email,Telephone,Experiences) {
+     GlobalArr.push({
     name: Fname,
     image: Image,
     role: Role,
@@ -266,111 +249,99 @@ function personnelCarte(
     telephone: Telephone,
     experiences: Experiences
   });
+  persoList.innerHTML = "";
+
   console.log(GlobalArr);
-  persoList.appendChild(carte);
+  GlobalArr.forEach(ele=>{
+    const carte = document.createElement("div");
+    carte.classList.add("pronalinfo");
+    carte.id = "pronalinfo";
+    carte.innerHTML += `
+        <img src="${ele.image}" alt="userlogo" width="60px" height="60px">
+        <div class="info" id="profile1" data-profile="${ele.name}">
+            <h1>${ele.name}</h1>
+            <p id="job">${ele.role}</p>
+        </div>
+    `;
+    persoList.appendChild(carte);
+  })
 }
-//cancel button
-function cancel() {
-  document.getElementById("validationForm").remove();
-}
-//add button in carte
+
 document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
   btn.addEventListener("click", (e) => {
     const type = e.currentTarget.dataset.room;
     const allowedRoles = roomConfig[type];
-    console.log(type);
+
     const ValidForm = document.createElement("div");
     ValidForm.className = "validationForm";
-    ValidForm.id = "validationForm";
+    ValidForm.id="validationForm";
     ValidForm.innerHTML = `
         <div class="btncancel">
-            <button type="button" id="cancelbtn" onclick="cancel()"><i class="fas fa-multiply"></i></button>
-        </div>`;
+            <button type="button" class="cancel" onclick="cancel()"><i class="fas fa-multiply"></i></button>
+        </div>
+    `;
 
-    GlobalArr.forEach((ele) => {
-      if (allowedRoles.includes(ele.role)) {
+    const employees = GlobalArr.filter(emp => allowedRoles.includes(emp.role));
+
+    if (employees.length === 0) {
+      ValidForm.innerHTML += `<p style="font-size:30px;">Empty list</p>`;
+    } else {
+      employees.forEach(emp => {
         const carte = document.createElement("div");
-        carte.classList.add("pronalinfo");
-        carte.id = "pronalinfo";
-
-        carte.innerHTML += `
-                        <img src="${ele.image}" width="60px">
-                        <div class="info" id="profile1" data-profile="${ele.name}">
-                            <h1>${ele.name}</h1>
-                            <p id="job">${ele.role}</p>
-                        </div>
-                        <div class="btns">
-                            <button type="button" class="plusbtn" data-room="${type}" data-role="${ele.role}">+</button>
-                            <button type="button" class="moinbtn" data-room="${type}" data-role="${ele.role}">-</button>
-                        </div>
-                    `;
+        carte.className = "pronalinfo2";
+        carte.innerHTML = `
+          <img src="${emp.image}" width="60px">
+          <div class="info" data-profile="${emp.name}">
+              <h1>${emp.name}</h1>
+              <p>${emp.role}</p>
+          </div>
+          <div class="btns">
+              <button type="button" class="plusbtn" data-room="${type}" data-name="${emp.name}">+</button>
+              <button type="button" class="moinbtn" data-room="${type}" data-name="${emp.name}">-</button>
+          </div>
+        `;
         ValidForm.appendChild(carte);
-      }
-      if(!allowedRoles.includes(ele.role))
-      {
-        ValidForm.innerHTML += "Empty list";
-        ValidForm.style.fontSize = "30px";
-      }
-    });
+      });
+    }
 
     container.appendChild(ValidForm);
-    const IMAGE = localStorage.getItem("image");
-    const Fname = localStorage.getItem("fullName");
-    const Role = localStorage.getItem("role");
-    const Email = localStorage.getItem("email");
-    const Telephone = localStorage.getItem("telephone");
-    const Experiences1 = localStorage.getItem("experiences");
 
-    console.log(Fname);
-    document.querySelectorAll(".plusbtn").forEach((btns) => {
-      btns.addEventListener("click", (e) => {
-        const type = e.currentTarget.dataset.room;
+    ValidForm.querySelectorAll(".plusbtn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const selectName = e.currentTarget.dataset.name;
+        const employee = GlobalArr.find(emp => emp.name === selectName);
         const roomList = document.getElementById(`${type}list`);
         const roomArray = RoomArr[type];
-        if (roomArray.some(membre=>membre.name === Fname)) {
+
+        if (!employee) return;
+        if (roomArray.some(m => m.name === selectName)) {
           alert("L'employé est déjà là !");
           return;
         }
+
         const carte = document.createElement("div");
-          carte.classList.add("pronalinfor");
-          carte.id = "pronalinfor";
-          carte.setAttribute("data-name", Fname);
-          carte.innerHTML = `<img src="${IMAGE}" alt="userlogo" id="profile1" data-profile="${Fname}" width="60px" height="60px">`;
-          carte.style.transition = "all 0.4s ease";
-          roomArray.push({
-            name: Fname,
-            role: Role,
-            email: Email,
-            image: IMAGE,
-            telephone: Telephone,
-            Experiences : Experiences1
-          });
-        if(roomArray.length < 3)
-        {
+        carte.className = "pronalinfor";
+        carte.dataset.name = employee.name;
+        carte.innerHTML = `<img src="${employee.image}" width="60px" data-profile="${employee.name}" height="60px" alt="userlogo">`;
+        roomArray.push(employee);
+
+        if (roomArray.length <= 3){
           roomList.appendChild(carte);
         }
-        
-        
-
-        //console.log("Added to room:", type, carte);
       });
     });
-    document.querySelectorAll(".moinbtn").forEach((btns) => {
-      btns.addEventListener("click", (e) => {
-        const type = e.currentTarget.dataset.room;
-        const roomList1 = document.getElementById(`${type}list`);
-        const roomArray1 = RoomArr[type];
-        console.log(roomArray1);
-        const element = roomList1.querySelector(`[data-name="${Fname}"]`);
+
+    ValidForm.querySelectorAll(".moinbtn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const selectName = e.currentTarget.dataset.name;
+        const roomList = document.getElementById(`${type}list`);
+        const roomArray = RoomArr[type];
+        const element = roomList.querySelector(`[data-name="${selectName}"]`);
 
         if (element) {
           element.remove();
-          roomArray1.forEach((ele) => {
-            if (ele.name === element) {
-              ele.name -= 1;
-            }
-          });
-          console.log("new arr " + roomArray1);
+          const index = roomArray.findIndex(emp => emp.name === selectName);
+          if (index !== -1) roomArray.splice(index, 1);
         }
       });
     });
@@ -386,10 +357,6 @@ document.addEventListener('click', (e)=>{
       DiplayProfile.classList.add('profiledisplay');
       DiplayProfile.id ="profiledisplay";
 
-      // for(let i = 0; i < pr.experiences.length; i++)
-      // {
-      //   cosn
-      // 
       console.log(pr.experiences);
       let exp_html = ""
       pr.experiences.forEach(exp => {
@@ -406,7 +373,7 @@ document.addEventListener('click', (e)=>{
               <button type="button" id="cancelbtn" onclick="cancel2()"><i class="fas fa-multiply"></i></button>
           </div>
           <div class="infor">
-              <img src="${pr.image}" alt="profileImage"/>
+              <img src="${pr.image}"  class="displayimg" />
               <h1 id="profileName">${pr.name}</h1>
               <p>${pr.role}</p>
               <p>Email: <span>${pr.email}</span></p>
@@ -419,105 +386,13 @@ document.addEventListener('click', (e)=>{
     }
   })
 })
-
-function cancel2()
-{
-  document.getElementById('profiledisplay').remove();
+function cancel() {
+  const formEl = document.getElementById("validationForm");
+  if(formEl) formEl.remove();
 }
-// const num_regex = /^(0 | \+212)(5|7|6)[0-9]{8}$/g
 
+function cancel2() {
+  const profileEl = document.getElementById('profiledisplay');
+  if(profileEl) profileEl.remove();
+}
 
-
-
-
-
-// document.addEventListener("click", (e) => {
-//   const Fname = localStorage.getItem("fullName");
-//   const Image = localStorage.getItem("image");
-//   const Role = localStorage.getItem("role");
-//   const Email = localStorage.getItem("email");
-//   const Telephone = localStorage.getItem("telephone");
-//   const Experiences = localStorage.getItem("experiences");
-
-  // const user = GlobalArr.find(p => p.name === Fname);
-
-  // if(includeConference.includes(user.role))
-  // {
-  //     console.log("oui vous pouver entrer");
-  // }
-  // if (e.target.classList.contains("plusbtn")) {
-  //   const card = e.target.closest(".pronalinfo");
-  //   const Job = card.querySelector("#job").textContent.trim();
-  //   console.log(Job);
-
-    // if(PersoArr.includes(Fname))
-    // {
-    //     alert("L'employé est déjà là !")
-    //     return;
-    // }
-    // // if(PersoArr.length < 3)   {
-    // //     const carte = document.createElement('div');
-    // //     carte.classList.add("pronalinfor");
-    // //     carte.id = "pronalinfor";
-    // //     carte.innerHTML = `<img src="${Image}" alt="userlogo" width="60px" height="60px">`;
-    // //     personnelList.appendChild(carte);
-    // //     PersoArr.push(Fname);
-    // // }else{
-    // //     alert('la chambre est en plein');
-    // // }
-
-    // if(SecurArr.includes(Fname))
-    // {
-    //     alert("L'employé est déjà là !")
-    //     return;
-    // }
-    // // if(SecurArr.length < 3)
-    // // {
-    // //     const carte = document.createElement('div');
-    // //     carte.classList.add("pronalinfor");;
-    // //     carte.id = "pronalinfor";
-    // //     carte.innerHTML = `<img src="${Image}" alt="userlogo" width="60px" height="60px">`;
-    // //     carte.style.transition = "all 0.4s ease";
-    // //     securiteList.appendChild(carte);
-    // //     SecurArr.push(Fname);
-    // // }else{
-    // //     alert('la chambre est en plein');
-    // // }
-
-    // if(SerArr.includes(Fname))
-    // {
-    //     alert("L'employé est déjà là !")
-    //     return;
-    // }
-
-    // // if(SerArr.length < 3)
-    // // {
-    // //     const carte = document.createElement('div');
-    // //     carte.classList.add("pronalinfor");;
-    // //     carte.id = "pronalinfor";
-    // //     carte.innerHTML = `<img src="${Image}" alt="userlogo" width="60px" height="60px">`;
-    // //     carte.style.transition = "all 0.4s ease";
-    // //     serveursList.appendChild(carte);
-    // //     SerArr.push(Fname);
-    // // }else{
-    // //     alert('la chambre est en plein');
-    // // }
-
-    // if(ManArr.includes(Fname))
-    // {
-    //     alert("L'employé est déjà là !")
-    //     return;
-    // }
-    // // if(SerArr.length < 3)
-    // // {
-    // //     const carte = document.createElement('div');
-    // //     carte.classList.add("pronalinfor");;
-    // //     carte.id = "pronalinfor";
-    // //     carte.innerHTML = `<img src="${Image}" alt="userlogo" width="60px" height="60px">`;
-    // //     carte.style.transition = "all 0.4s ease";
-    // //     SerArr.push(Fname);
-    // // }else{
-    // //     alert('la chambre est en plein');
-    // //
-//   }
-// });
