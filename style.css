@@ -299,9 +299,8 @@ hr{
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    gap: 5px;
+    gap: 10px;
     padding: 10px;
-    line-height: 12px;
     background: white;
     border-radius: 6px;
     box-shadow: 2px 2px 6px rgba(0,0,0,0.25);
@@ -365,13 +364,13 @@ hr{
     height: 60px;
 }
 .pronalinfo2{
+    width: 80%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     gap: 5px;
     padding: 10px;
-    line-height: 12px;
     background: white;
     border-radius: 6px;
     box-shadow: 2px 2px 6px rgba(0,0,0,0.25);
@@ -381,8 +380,8 @@ hr{
     transform: translateX(15px);
 }
 .pronalinfo2 img{
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     border: 4px solid;
     border-color: rgb(45, 209, 45);
@@ -461,9 +460,20 @@ hr{
     background-color: #F0F0F0;
     color: #727272;
     font-weight: 100;
-    font-size: 20px;
+    font-size: 11px;
     width: auto;
     
+}
+.info{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    line-height: 5px;
+}
+.info h1{
+    font-size: 15px;
 }
 .infor p{
     padding: 10px;
@@ -678,4 +688,37 @@ hr{
         color: white;
         border: none;
     }
+    .info{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+    .info h1{
+        font-size: 15px;
+    }
+    .pronalinfo2{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 15px;
+    padding: 10px;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.25);
+    transition: all 0.5s;
+}
+.pronalinfo2:hover{
+    transform: translateX(15px);
+}
+.pronalinfo2 img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 4px solid;
+    border-color: rgb(45, 209, 45);
+    
+}
 }
