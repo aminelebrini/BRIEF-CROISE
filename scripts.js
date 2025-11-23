@@ -143,6 +143,8 @@ document.getElementById("validation").addEventListener("click", ()=>{
         const Fnamemessage = document.getElementById('fnamemessage');
         const ExperMessage = document.getElementById('experiencemessage');
 
+        
+
         if(Fname.length === 0)
         {
           Fnamemessage.innerText = "S'il vous plaît, mettez Votre Full Name";
@@ -247,6 +249,7 @@ function personnelCarte(Fname,Image,Role,Email,Telephone,Experiences) {
     role: Role,
     email: Email,
     telephone: Telephone,
+    localisation : null,
     experiences: Experiences
   });
   persoList.innerHTML = "";
@@ -323,16 +326,18 @@ document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
           alert("L'employé est déjà là !");
           return;
         }
-
         const carte = document.createElement("div");
         carte.className = "pronalinfor";
         carte.dataset.name = employee.name;
         carte.innerHTML = `<img src="${employee.image}" width="60px" data-profile="${employee.name}" height="60px" alt="userlogo">`;
+        employee.localisation = `${type} room`;
         roomArray.push(employee);
 
+        console.log("this is ", roomArray);
         if (roomArray.length <= 3){
           roomList.appendChild(carte);
         }
+        
       });
     });
 
@@ -380,6 +385,7 @@ document.addEventListener('click', (e)=>{
               <img src="${pr.image}"  class="displayimg" />
               <h1 id="profileName">${pr.name}</h1>
               <p>${pr.role}</p>
+              <p>${pr.localisation}</p>
               <p>Email: <span>${pr.email}</span></p>
               <p>TELEPHONE: <span>${pr.telephone}</span></p>
               ${exp_html}
@@ -399,4 +405,3 @@ function cancel2() {
   const profileEl = document.getElementById('profiledisplay');
   if(profileEl) profileEl.remove();
 }
-
