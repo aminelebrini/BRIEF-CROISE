@@ -11,12 +11,12 @@ const GlobalArr = [];
 
 
 const roomConfig = {
-  conference: ["IT", "MANAGER"],
+  conference: ["IT", "MANAGER","NETTOYAGE", "SECURITE", "RECEPTIONNISTE"],
   securite: ["SECURITE", "MANAGER"],
-  serveurs: ["MANAGER", "IT"],
+  serveurs: ["MANAGER", "IT", "NETTOYAGE"],
   reception: ["IT", "MANAGER", "NETTOYAGE", "SECURITE", "RECEPTIONNISTE"],
-  personnel: ["IT", "MANGER"],
-  archives: ["SECURITE", "MANAGER"],
+  personnel: ["IT", "MANAGER","NETTOYAGE", "SECURITE", "RECEPTIONNISTE"],
+  archives: ["MANAGER"],
 };
 
 const ConferenceArr = [];
@@ -291,8 +291,8 @@ document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
       employees.forEach(emp => {
         const carte = document.createElement("div");
         carte.className = "pronalinfo2";
-        carte.innerHTML = `
-          <img src="${emp.image}" width="60px">
+        carte.innerHTML += `
+          <img src="${emp.image}">
           <div class="info" data-profile="${emp.name}">
               <h1>${emp.name}</h1>
               <p>${emp.role}</p>
