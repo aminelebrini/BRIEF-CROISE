@@ -7,8 +7,41 @@ const personnelList = document.getElementById("persnnallist");
 const archivesList = document.getElementById("archiveslist");
 const persoList = document.getElementById("persolist");
 
-const GlobalArr = [];
-
+const GlobalArr = [
+  {
+  name: "HAMID SBAI",
+  image: "https://avatars.githubusercontent.com/u/113290995?v=4",
+  role: "IT",
+  email: "bakozati@mailinator.com",
+  telephone: "0716038492",
+  localisation: null,
+  experiences: [
+    {
+      role: "INWI",
+      entreprise: "IT",
+      debut: "1985-12-21",
+      fin: "1998-03-09"
+    }
+  ]
+},
+{
+  name: "Sylvia Hughes",
+  image: "https://avatars.githubusercontent.com/u/113290995?v=4",
+  role: "IT",
+  email: "bakozati@mailinator.com",
+  telephone: "0716038492",
+  localisation: null,
+  experiences: [
+    {
+      role: "TECHNICIEN",
+      entreprise: "OCP",
+      debut: "1985-12-21",
+      fin: "1998-03-09"
+    }
+  ]
+}
+];
+personnelCarte(GlobalArr);
 
 const roomConfig = {
   conference: ["IT", "MANAGER","NETTOYAGE", "SECURITE", "RECEPTIONNISTE"],
@@ -224,38 +257,25 @@ document.getElementById("validation").addEventListener("click", ()=>{
       alert("L'employé est déjà là !");
       return;
     }
-    personnelCarte(
-      Fname,
-      Image,
-      Role,
-      Email,
-      Telephone,
-      useExperience
-    );
-    localStorage.setItem("fullName", Fname);
-    localStorage.setItem("image", Image);
-    localStorage.setItem("role", Role);
-    localStorage.setItem("email", Email);
-    localStorage.setItem("telephone", Telephone);
-    localStorage.setItem("experiences", useExperience);
-    document.getElementById('myForm').reset(); 
-  });
-});
-
-function personnelCarte(Fname,Image,Role,Email,Telephone,Experiences) {
-     GlobalArr.push({
+    GlobalArr.push({
     name: Fname,
     image: Image,
     role: Role,
     email: Email,
     telephone: Telephone,
     localisation : null,
-    experiences: Experiences
+    experiences: useExperience
   });
-  persoList.innerHTML = "";
+    personnelCarte(GlobalArr);
+    document.getElementById('myForm').reset(); 
+  });
+});
 
+function personnelCarte(person) {
   console.log(GlobalArr);
-  GlobalArr.forEach(ele=>{
+
+  persoList.innerHTML = "";
+  person.forEach(ele=>{
     const carte = document.createElement("div");
     carte.classList.add("pronalinfo");
     carte.id = "pronalinfo";
@@ -307,13 +327,6 @@ document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
     }
 
     container.appendChild(ValidForm);
-    const IMAGE = localStorage.getItem("image");
-    const Fname = localStorage.getItem("fullName");
-    const Role = localStorage.getItem("role");
-    const Email = localStorage.getItem("email");
-    const Telephone = localStorage.getItem("telephone");
-    const Experiences1 = localStorage.getItem("experiences");
-
     ValidForm.querySelectorAll(".plusbtn").forEach(btn => {
       btn.addEventListener("click", (e) => {
         const selectName = e.currentTarget.dataset.name;
