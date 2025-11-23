@@ -7,33 +7,34 @@ const personnelList = document.getElementById("persnnallist");
 const archivesList = document.getElementById("archiveslist");
 const persoList = document.getElementById("persolist");
 
+
 const GlobalArr = [
   {
-  name: "HAMID SBAI",
-  image: "",
+  name: "BRHIM KACIMI",
+  image: "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png",
   role: "IT",
   email: "bakozati@mailinator.com",
   telephone: "0716038492",
-  localisation: null,
+  localisation: "conference",
   experiences: [
     {
-      role: "INWI",
-      entreprise: "IT",
+      role: "TECHNICIEN",
+      entreprise: "AKWA",
       debut: "1985-12-21",
       fin: "1998-03-09"
     }
   ]
 },
 {
-  name: "Sylvia Hughes",
-  image: "",
+  name: "HOUSSAM TOUFIK",
+  image: "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png",
   role: "IT",
   email: "bakozati@mailinator.com",
   telephone: "0716038492",
-  localisation: null,
+  localisation: "securite",
   experiences: [
     {
-      role: "TECHNICIEN",
+      role: "securite",
       entreprise: "OCP",
       debut: "1985-12-21",
       fin: "1998-03-09"
@@ -41,6 +42,7 @@ const GlobalArr = [
   ]
 }
 ];
+
 personnelCarte(GlobalArr);
 
 const roomConfig = {
@@ -345,15 +347,16 @@ document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
         carte.innerHTML = `<img src="${employee.image}" width="60px" data-profile="${employee.name}" height="60px" alt="userlogo">`;
         employee.localisation = `${type} room`;
         roomArray.push(employee);
-
-        console.log("this is ", roomArray);
-        if (roomArray.length <= 3){
+        if (roomArray.length < 4){
           roomList.appendChild(carte);
         }
-        
+        const div = document.querySelector(`.${type}`);
+        if(roomList.children.length > 0)
+        {
+           div.style.backgroundColor = "rgba(255,255,255,0.5)";
+        }
       });
     });
-
     ValidForm.querySelectorAll(".moinbtn").forEach(btn => {
       btn.addEventListener("click", (e) => {
         const selectName = e.currentTarget.dataset.name;
@@ -363,7 +366,15 @@ document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
         if (element) {
           element.remove();
           const index = roomArray.findIndex(emp => emp.name === selectName);
-          if (index !== -1) roomArray.splice(index, 1);
+          if (index !== -1) 
+          {
+            roomArray.splice(index, 1);
+          }
+        }
+        const div = document.querySelector(`.${type}`);
+        if(!roomList.children.length > 0)
+        {
+           div.style.backgroundColor = "rgba(235,32,32,0.4)";
         }
       });
     });
@@ -418,3 +429,4 @@ function cancel2() {
   const profileEl = document.getElementById('profiledisplay');
   if(profileEl) profileEl.remove();
 }
+
