@@ -10,7 +10,7 @@ const persoList = document.getElementById("persolist");
 const GlobalArr = [
   {
   name: "HAMID SBAI",
-  image: "https://avatars.githubusercontent.com/u/113290995?v=4",
+  image: "",
   role: "IT",
   email: "bakozati@mailinator.com",
   telephone: "0716038492",
@@ -26,7 +26,7 @@ const GlobalArr = [
 },
 {
   name: "Sylvia Hughes",
-  image: "https://avatars.githubusercontent.com/u/113290995?v=4",
+  image: "",
   role: "IT",
   email: "bakozati@mailinator.com",
   telephone: "0716038492",
