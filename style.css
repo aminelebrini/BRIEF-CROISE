@@ -242,47 +242,44 @@ hr{
 .conference{
     grid-column: 1 / 2;
     grid-row: 1 / 2;
-    background: rgba(255,255,255,0.2);
 }
 
 .vertcolouar{
     grid-column: 2 / 3;    
     grid-row: 1 / 4;      
     border: 2px solid black;
-    background: rgba(255,255,255,0.2);
+    
 }
 .horizcolouar{
     grid-column: 3 / 5;    
     grid-row: 2 / 3;      
     border: 2px solid black;
-    background: rgba(255,255,255,0.2);
 }
 
 .reception{
     grid-column: 1 / 2;
     grid-row: 2 / 4;
-    background: rgba(255,255,255,0.2);
+    background-color: rgba(235,32,32,0.4);
 }
 
 .serveurs{
     grid-column: 3 / 4;
     grid-row: 1 / 2;
-    background: rgba(255,255,255,0.2);
+    background-color: rgba(235,32,32,0.4);
 }
 .securite{
     grid-column: 4 / 5;
     grid-row: 1 / 2;
-    background: rgba(255,255,255,0.2);
+    background-color: rgba(235,32,32,0.4);
 }
 .personnel{
      grid-column: 3 / 4;
     grid-row: 3 / 4;
-    background: rgba(255,255,255,0.2);
 }
 .archives{
      grid-column: 4 / 5;
     grid-row: 3 / 4;
-    background: rgba(255,255,255,0.2);
+    background-color: rgba(235,32,32,0.4);
 }
 .persolist{
     display: flex;
