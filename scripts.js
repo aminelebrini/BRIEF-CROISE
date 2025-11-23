@@ -350,6 +350,9 @@ document.querySelectorAll(".plusbtnROOM").forEach((btn) => {
         if (roomArray.length < 4){
           roomList.appendChild(carte);
         }
+        else{
+          alert('room et en plein')
+        }
         const div = document.querySelector(`.${type}`);
         if(roomList.children.length > 0)
         {
