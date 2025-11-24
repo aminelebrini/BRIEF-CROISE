@@ -21,14 +21,14 @@ const GlobalArr = [
       role: "TECHNICIEN",
       entreprise: "AKWA",
       debut: "1985-12-21",
-      fin: "1998-03-09"
+      fin: "2000-03-09"
     }
   ]
 },
 {
   name: "HOUSSAM TOUFIK",
   image: "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png",
-  role: "IT",
+  role: "MANAGER",
   email: "bakozati@mailinator.com",
   telephone: "0716038492",
   localisation: "securite",
@@ -36,13 +36,44 @@ const GlobalArr = [
     {
       role: "securite",
       entreprise: "OCP",
-      debut: "1985-12-21",
-      fin: "1998-03-09"
+      debut: "1444-12-21",
+      fin: "1555-03-09"
     }
   ]
-}
+},
+{
+  name: "OTHMANE IBRAHIMI",
+  image: "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png",
+  role: "NETOYAGE",
+  email: "bakozati@mailinator.com",
+  telephone: "0716038492",
+  localisation: "conference",
+  experiences: [
+    {
+      role: "TECHNICIEN",
+      entreprise: "AKWA",
+      debut: "1985-12-21",
+      fin: "2000-03-09"
+    }
+  ]
+},
+{
+  name: "SARA HAMID",
+  image: "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png",
+  role: "IT",
+  email: "bakozati@mailinator.com",
+  telephone: "0716038492",
+  localisation: "conference",
+  experiences: [
+    {
+      role: "IT",
+      entreprise: "AKWA",
+      debut: "1985-12-21",
+      fin: "2000-03-09"
+    }
+  ]
+},
 ];
-
 personnelCarte(GlobalArr);
 
 const roomConfig = {
